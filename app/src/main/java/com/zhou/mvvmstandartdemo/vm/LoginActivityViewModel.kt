@@ -7,22 +7,18 @@ import com.zhou.mvvmstandartdemo.m.UserModel
 import com.zhou.mvvmstandartdemo.m.bean.user.UserBean
 
 
-interface UserInterface {
-    fun doLogin(userName: String, password: String)
-}
-
 /**
  * 业务逻辑转移到这里
  *
  * 原则上，一个界面（Activity或者Fragment）对应一个 UserModel
  *
  */
-class LoginActivityViewModel : ViewModel(), UserInterface {
+class LoginActivityViewModel : ViewModel() {
     val userLiveData: MutableLiveData<UserBean> by lazy {
         MutableLiveData<UserBean>()
     }
 
-    override fun doLogin(userName: String, password: String) {
+    fun doLogin(userName: String, password: String) {
 
         // 发送网络请求，并且执行回调
         UserModel().login(userName, password, object : HttpCallback<UserBean> {

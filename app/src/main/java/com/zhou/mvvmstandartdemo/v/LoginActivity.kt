@@ -1,22 +1,17 @@
 package com.zhou.mvvmstandartdemo.v
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.zhou.base.m.BaseView
 import com.zhou.mvvmstandartdemo.R
+import com.zhou.mvvmstandartdemo.v.base.BaseActivity
+import com.zhou.mvvmstandartdemo.v.base.BaseView
 import com.zhou.mvvmstandartdemo.vm.LoginActivityViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
 interface LoginView : BaseView {
     fun getUserName(): String
     fun getPassword(): String
-
-    fun showLoading()
-    fun hideLoading()
-
     fun showResult(res: String)
 }
 
@@ -28,26 +23,36 @@ interface LoginView : BaseView {
  *
  *
  */
-class LoginActivity : AppCompatActivity(), LoginView {
+class LoginActivity : BaseActivity<LoginActivityViewModel>(), LoginView {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+    override fun getLayoutId(): Int {
+        return R.layout.activity_login
+    }
 
+    override fun init() {
         // 获取ViewModel
-        val userModel = ViewModelProvider(this).get(LoginActivityViewModel::class.java)
-
         // 点击事件触发，出发VM的业务逻辑
         btnLogin.setOnClickListener {
             showLoading() // 开始请求数据显示加载中
-            userModel.doLogin(getUserName(), getPassword())
+            getViewModel().doLogin(getUserName(), getPassword())
         }
 
         // 定义数据回调逻辑
-        userModel.userLiveData.observe(this, Observer {
+        getViewModel().userLiveData.observe(this, Observer {
             hideLoading() // 得到数据返回，隐藏加载中
             showResult(it.toString())// 处理数据
         })
+
+        addFragment()
+    }
+
+    private lateinit var fragment: Fragment
+    private fun addFragment() {
+        fragment = NoticeTipsFragment()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContent, fragment, NoticeTipsFragment::class.java.simpleName)
+            .show(fragment)
+            .commitAllowingStateLoss()
     }
 
     override fun getUserName(): String {
@@ -69,4 +74,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
     override fun showResult(res: String) {
         dataView.text = res
     }
+
+
 }

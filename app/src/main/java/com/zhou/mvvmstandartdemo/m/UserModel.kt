@@ -7,7 +7,7 @@ import com.zhou.mvvmstandartdemo.m.bean.user.UserBean
 /**
  * 约束业务数据的接口
  */
-interface UserModelInterface {
+interface UserModelInterface : BaseModel {
     fun login(userName: String, password: String, callback: HttpCallback<UserBean>)
 }
 
