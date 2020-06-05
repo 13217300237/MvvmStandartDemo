@@ -1,12 +1,15 @@
-package com.zhou.mvvmstandartdemo.v.base
+package com.zhou.baselib
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import java.lang.reflect.ParameterizedType
 
-open abstract class BaseActivity<T : ViewModel> : AppCompatActivity() {
+open abstract class BaseFragment<T : ViewModel> : Fragment() {
     /**
      * 布局ID
      */
@@ -35,11 +38,24 @@ open abstract class BaseActivity<T : ViewModel> : AppCompatActivity() {
     /**
      * 界面元素初始化
      */
-    abstract fun init()
+    abstract fun initView()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
-        init()
+    abstract fun initObserber()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(getLayoutId(), container, false)
+    }
+
+
+    /**
+     * onViewCreated之后，才能用kotlin的viewId去操作view
+     */
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initView()
+        initObserber()
     }
 }

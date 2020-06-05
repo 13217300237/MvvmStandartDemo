@@ -1,4 +1,4 @@
-package com.zhou.mvvmstandartdemo.v.base
+package com.zhou.baselib
 
 interface BaseView {
     fun showLoading()

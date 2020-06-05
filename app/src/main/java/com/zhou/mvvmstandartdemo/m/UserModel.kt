@@ -1,6 +1,7 @@
 package com.zhou.mvvmstandartdemo.m
 
-import com.zhou.baselibrary.network.HttpCallback
+import com.zhou.baselib.BaseModel
+import com.zhou.baselib.network.HttpCallback
 import com.zhou.mvvmstandartdemo.m.network.HttpRequestManager
 import com.zhou.mvvmstandartdemo.m.bean.user.UserBean
 

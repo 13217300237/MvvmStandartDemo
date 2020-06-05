@@ -4,8 +4,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.zhou.mvvmstandartdemo.R
-import com.zhou.mvvmstandartdemo.v.base.BaseActivity
-import com.zhou.mvvmstandartdemo.v.base.BaseView
+import com.zhou.baselib.BaseActivity
+import com.zhou.baselib.BaseView
 import com.zhou.mvvmstandartdemo.vm.LoginActivityViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -29,31 +29,29 @@ class LoginActivity : BaseActivity<LoginActivityViewModel>(), LoginView {
         return R.layout.activity_login
     }
 
-    override fun init() {
+    override fun initView() {
         // 获取ViewModel
         // 点击事件触发，出发VM的业务逻辑
         btnLogin.setOnClickListener {
             showLoading() // 开始请求数据显示加载中
             getViewModel().doLogin(getUserName(), getPassword())
         }
+        tvMsg.setOnClickListener {
+            getViewModel().getMsg()
+        }
+    }
 
+    override fun initObserver() {
         // 定义数据回调逻辑
-        getViewModel().userLiveData.observe(this, Observer {
+        getViewModel().observerDoLogin(this, Observer {
             hideLoading() // 得到数据返回，隐藏加载中
             showResult(it.toString())// 处理数据
         })
-
-        addFragment()
+        getViewModel().observerGetMsg(this, Observer {
+            tvMsg.text = it.toString()
+        })
     }
 
-    private lateinit var fragment: Fragment
-    private fun addFragment() {
-        fragment = NoticeTipsFragment()
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContent, fragment, NoticeTipsFragment::class.java.simpleName)
-            .show(fragment)
-            .commitAllowingStateLoss()
-    }
 
     override fun getUserName(): String {
         return tvUsername.text.toString()

@@ -1,4 +1,4 @@
-package com.zhou.baselibrary.network
+package com.zhou.baselib.network
 
 interface HttpCallback<T> {
     fun onSuccess(result: T?)

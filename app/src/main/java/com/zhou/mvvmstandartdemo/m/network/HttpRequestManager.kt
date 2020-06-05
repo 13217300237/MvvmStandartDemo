@@ -1,6 +1,6 @@
 package com.zhou.mvvmstandartdemo.m.network
 
-import com.zhou.baselibrary.network.HttpCallback
+import com.zhou.baselib.network.HttpCallback
 import com.zhou.baselibrary.network.Https
 import com.zhou.mvvmstandartdemo.m.bean.user.UserBean
 import okhttp3.Request
