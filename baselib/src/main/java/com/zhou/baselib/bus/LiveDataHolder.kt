@@ -25,11 +25,16 @@ class LiveDataHolder {
 
     private val map: HashMap<Class<out Any?>, MutableList<MutableLiveData<out Any?>>> = HashMap()
 
+
+    fun <T> getLiveData(key: Class<T>): MutableLiveData<T> {
+        return getLiveData(key, EventType.DEFAULT)
+    }
+
     /**
      *
      * 获得一个指定的LiveData
      *
-     * @param T 指定返回值类型
+     * @param key 指定返回值类型
      * @param eventType 消息通道的类别
      * @see  EventType
      */
@@ -57,10 +62,6 @@ class LiveDataHolder {
         }
         val newLiveData = liveDataClz.getConstructor().newInstance()
         currentList.add(newLiveData)
-
-        // 打印一下list内部
-        Log.d("asfxfasdf", "$key -  $currentList")
-
         return newLiveData
     }
 

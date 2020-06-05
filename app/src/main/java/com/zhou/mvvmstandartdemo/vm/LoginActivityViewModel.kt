@@ -32,7 +32,7 @@ class LoginActivityViewModel : BaseViewModel() {
      */
     fun getMsg() {
         val noticeLiveData =
-            liveDataHolder.getLiveData(String::class.java, EventType.DEFAULT)
+            liveDataHolder.getLiveData(String::class.java)
         noticeLiveData.postValue(NoticeModel().getNotice())
     }
 
@@ -43,7 +43,7 @@ class LoginActivityViewModel : BaseViewModel() {
      */
     fun observerGetMsg(lifecycleOwner: LifecycleOwner, observer: Observer<String>) {
         val noticeLiveData =
-            liveDataHolder.getLiveData(String::class.java, EventType.DEFAULT)
+            liveDataHolder.getLiveData(String::class.java)
         noticeLiveData.observe(lifecycleOwner, observer)
     }
 
@@ -68,7 +68,8 @@ class LoginActivityViewModel : BaseViewModel() {
      * 监听登录业务
      */
     fun observerDoLogin(lifecycleOwner: LifecycleOwner, observer: Observer<UserBean>) {
-        liveDataHolder.getLiveData(UserBean::class.java, EventType.ALIVE).observe(lifecycleOwner, observer)
+        liveDataHolder.getLiveData(UserBean::class.java, EventType.ALIVE)
+            .observe(lifecycleOwner, observer)
     }
 
 }
