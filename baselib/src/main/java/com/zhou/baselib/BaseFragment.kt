@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import java.lang.reflect.ParameterizedType
 
-open abstract class BaseFragment<T : ViewModel> : Fragment() {
+open abstract class BaseFragment<T : ViewModel, V : ViewModel> : Fragment() {
     /**
      * 布局ID
      */
@@ -17,6 +17,10 @@ open abstract class BaseFragment<T : ViewModel> : Fragment() {
 
     private fun getViewModelClz(): Class<T> {
         return analysisClassInfo(this)
+    }
+
+    fun getActivityViewModel(): V {
+        return (activity as BaseActivity<*>).getViewModel() as V
     }
 
     fun getViewModel(): T {

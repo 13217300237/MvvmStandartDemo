@@ -39,6 +39,26 @@ class LoginActivity : BaseActivity<LoginActivityViewModel>(), LoginView {
         tvMsg.setOnClickListener {
             getViewModel().getMsg()
         }
+
+        addFragment()
+        addFragment2()
+    }
+
+    private lateinit var fragment: Fragment
+    private fun addFragment() {
+        fragment = NoticeTipsFragment()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContent, fragment, NoticeTipsFragment::class.java.simpleName)
+            .show(fragment)
+            .commitAllowingStateLoss()
+    }
+
+    private fun addFragment2() {
+        fragment = NoticeTipsFragment2()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContent2, fragment, NoticeTipsFragment2::class.java.simpleName)
+            .show(fragment)
+            .commitAllowingStateLoss()
     }
 
     override fun initObserver() {

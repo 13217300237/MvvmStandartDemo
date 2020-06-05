@@ -45,6 +45,27 @@
         android:gravity="center"
         android:text="点我去读取消息"
         android:textColor="#ffffff"
+        android:textSize="22sp"
+        android:visibility="gone"/>
+
+    <FrameLayout
+        android:id="@+id/fragmentContent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="点我去读取消息"
+        android:textColor="#ffffff"
+        android:textSize="22sp" />
+
+    <FrameLayout
+        android:id="@+id/fragmentContent2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="点我去读取消息"
+        android:textColor="#ffffff"
         android:textSize="22sp" />
 
     <TextView

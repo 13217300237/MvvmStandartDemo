@@ -18,15 +18,6 @@ import com.zhou.mvvmstandartdemo.m.bean.user.UserBean
  */
 class LoginActivityViewModel : BaseViewModel() {
 
-//    private val userLiveData: MutableLiveData<UserBean> by lazy { MutableLiveData<UserBean>() }
-//    private val noticeLiveData: SingleLiveData<String> by lazy { SingleLiveData<String>() }
-
-    //......更多LiveData
-
-    // 首先，认定一个类型的liveData在这里只存在一个变量。
-    // 然后，这一个变量应该是可以用class来反射创建的。
-    // 所以，只要在需要使用的时候传入LiveData的class，然后把反射创建出一个LiveData对象，存入List，再把list赋值给map[viewModelClz]
-
     /**
      * 触发业务
      */

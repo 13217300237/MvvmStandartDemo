@@ -1,7 +1,5 @@
 package com.zhou.baselib.bus
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 enum class EventType {
