@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".v.LoginActivity">
+
+        </activity>
+
+        <activity android:name=".v.DrawerActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|locale"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

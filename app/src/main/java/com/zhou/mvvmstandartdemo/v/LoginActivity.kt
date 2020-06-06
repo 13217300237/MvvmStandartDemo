@@ -1,5 +1,6 @@
 package com.zhou.mvvmstandartdemo.v
 
+import android.animation.ValueAnimator
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -42,6 +43,8 @@ class LoginActivity : BaseActivity<LoginActivityViewModel>(), LoginView {
 
         addFragment()
         addFragment2()
+
+        val ani = ValueAnimator.ofFloat(0f,1f)
     }
 
     private lateinit var fragment: Fragment
