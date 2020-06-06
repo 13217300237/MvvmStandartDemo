@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutDrawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#20283B">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/a_nav_down"
+            app:layout_constraintBottom_toBottomOf="@id/ll_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:background="#273651"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/ll_1">
+
+            <TextView
+                android:id="@+id/switchProduct"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="#FF8156"
+                android:drawableRight="@mipmap/a_nav_down"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="XAU/USD"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:drawableRight="@mipmap/a_nav_down"
+                android:text="1318.14"
+                android:textColor="#79C956"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="0.53%"
+                android:textColor="#79C956"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/tv3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="1.25"
+                android:textColor="#79C956"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/contentFrame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#323744"
+            app:layout_constraintTop_toBottomOf="@id/cl_2"></FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#273651"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivUp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/a_pop_bar_arrow_up"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Lot"
+                android:textColor="#ffffff"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/plusReduce"
+                app:layout_constraintTop_toBottomOf="@id/ivUp" />
+
+            <LinearLayout
+                android:id="@+id/plusReduce"
+                android:layout_width="174dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="7dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="7dp"
+                app:layout_constraintLeft_toRightOf="@id/tvLot"
+                app:layout_constraintRight_toLeftOf="@id/tvMoney"
+                app:layout_constraintTop_toBottomOf="@id/ivUp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="165"
+                    android:gravity="center"
+                    android:text="0.03"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$15"
+                android:textColor="#ffffff"
+                app:layout_constraintLeft_toRightOf="@id/plusReduce"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivUp"
+                app:layout_constraintTop_toTopOf="@id/tvLot" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/b1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginBottom="11dp"
+                android:background="@drawable/bg_2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/b2"
+                app:layout_constraintTop_toBottomOf="@id/plusReduce">
+
+                <TextView
+                    android:id="@+id/s1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="1317.64"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toTopOf="@id/s11"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/s11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="卖"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/s1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/b2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="11dp"
+                android:background="@drawable/bg_3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/b1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/b1">
+
+                <TextView
+                    android:id="@+id/x1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="1317.64"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toTopOf="@id/x11"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/x11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="卖"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/x1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/bg_4"
+                android:gravity="center"
+                android:text="50"
+                android:textColor="#FF8156"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/b1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/b1" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clOpenOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#273651"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="8dp"
+                android:drawableRight="@mipmap/a_nav_down"
+                android:drawablePadding="5dp"
+                android:text="XAU/USD"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/priceBuy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="买入0.03手"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/productName"
+                app:layout_constraintTop_toBottomOf="@id/productName" />
+
+            <TextView
+                android:id="@+id/priceOpenOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="开仓价格：1318.64"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="@id/productName"
+                app:layout_constraintTop_toBottomOf="@id/priceBuy" />
+
+            <TextView
+                android:id="@+id/maxOffset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="最大偏移：50"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/productName"
+                app:layout_constraintTop_toBottomOf="@id/priceOpenOrder" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="104dp"
+                android:layout_height="104dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/z1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="-$2.10"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toTopOf="@id/z2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/z2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:text="开仓"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/z1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/btnOpenOrder"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_5"
+            android:gravity="center"
+            android:text="继续开仓"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/clOpenOrder" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topExpand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#273651"
+            android:translationY="0dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:clickable="true"
+            app:layout_constraintTop_toBottomOf="@id/ll_1">
+
+            <TextView
+                android:id="@+id/d1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="保证金比例"
+                android:textColor="#ffffff"
+                app:layout_constraintLeft_toLeftOf="@id/ivBaozhengjin"
+                app:layout_constraintRight_toRightOf="@id/ivBaozhengjin"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivBaozhengjin"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginBottom="26dp"
+                android:src="@mipmap/baozhengjin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/d1" />
+
+            <TextView
+                android:id="@+id/tvLossProfit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:layout_marginRight="77dp"
+                android:text="盈亏：$142.13"
+                android:textColor="#ffffff"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvOccupy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="77dp"
+                android:text="占用：$142.13"
+                android:textColor="#ffffff"
+                app:layout_constraintLeft_toLeftOf="@id/tvLossProfit"
+                app:layout_constraintTop_toBottomOf="@id/tvLossProfit" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="77dp"
+                android:text="可用：$2345"
+                android:textColor="#ffffff"
+                app:layout_constraintLeft_toLeftOf="@id/tvLossProfit"
+                app:layout_constraintTop_toBottomOf="@id/tvOccupy" />
+
+            <ImageView
+                android:id="@+id/ivExpanded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:src="@mipmap/a_pop_bar_arrow_up"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_1"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="#273651"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/drawerLeft"
+                android:layout_width="0dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="22"
+                android:background="#ffffff"
+                android:text="左" />
+
+            <TextView
+                android:id="@+id/tvMidTitle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="331"
+                android:gravity="center"
+                android:text="$16473.11"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/drawerRight"
+                android:layout_width="0dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="22"
+                android:background="#ffffff"
+                android:text="右" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/a_nav_down"
+            app:layout_constraintBottom_toBottomOf="@id/ll_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--左侧菜单-->
+    <!--layout_gravity控制菜单显示的侧面位置-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="左侧菜单" />
+        <!--fitsSystemWindows控制布局在沉浸状态时保持内容在状态栏以下-->
+
+    </LinearLayout>
+
+    <!--右侧菜单-->
+    <!--如果是两个抽屉那么layout_gravity属性值不能相同,即一左一右-->
+    <!--现在fitsSystemWindow属性并没有解决右侧菜单初始控件与状态栏重叠问题-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@color/colorAccent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="右侧菜单"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
